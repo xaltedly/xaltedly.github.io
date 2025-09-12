@@ -1,4 +1,4 @@
-let stuff = [];
+let stuff = ["Learn Git"];
 
 
 const input = document.querySelector("input");
