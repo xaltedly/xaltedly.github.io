@@ -1,4 +1,4 @@
-let stuff = ["Learn Git"];
+let stuff = [];
 
 
 const input = document.querySelector("input");
@@ -122,6 +122,9 @@ function whenSubmit(c) {
 
 
 stuff = JSON.parse(localStorage.getItem("stuff"));
+if(stuff===null){
+    stuff = ["Learn Gitg"];
+}
 loadUI();
 input.focus();
 
