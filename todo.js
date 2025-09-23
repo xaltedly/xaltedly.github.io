@@ -17,7 +17,32 @@ let ifEdit = false;
 let boxV;
 let position;
 
-
+function loadUI() {
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
+    for (let i = 0; i < stuff.length; i++) {
+        const b = document.createElement("li");
+        const sp = document.createElement("span");
+        const sp2 = document.createElement("span");
+        sp2.textContent = "_____";
+        sp2.setAttribute("class", "space");
+        sp.textContent = `${stuff[i].slice(0, stuff[i].length - 1)}`;
+        sp.setAttribute("title", "Right-click me to edit!");
+        switch (stuff[i].charAt(stuff[i].length - 1)) {
+            case "r": sp.setAttribute("class", "red"); break;
+            case "y": sp.setAttribute("class", "yellow"); break;
+            case "g": sp.setAttribute("class", "green"); break;
+        }
+        ifEdit = false;
+        b.appendChild(sp);
+        b.appendChild(sp2);
+        b.appendChild(buildDeleteButton(i));
+        b.addEventListener("contextmenu", (e) => editText(sp.textContent, e, sp, i, b));
+        bullets.appendChild(b);
+    }
+    list.appendChild(bullets);
+}
 
 
 
@@ -74,35 +99,6 @@ function buildDeleteButton(num) {
     del.addEventListener("click", removeBullet);
     return del;
 }
-
-
-function loadUI() {
-    while (list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
-    for (let i = 0; i < stuff.length; i++) {
-        const b = document.createElement("li");
-        const sp = document.createElement("span");
-        const sp2 = document.createElement("span");
-        sp2.textContent = "_____";
-        sp2.setAttribute("class", "space");
-        sp.textContent = `${stuff[i].slice(0, stuff[i].length - 1)}`;
-        sp.setAttribute("title", "Right-click me to edit!");
-        switch (stuff[i].charAt(stuff[i].length - 1)) {
-            case "r": sp.setAttribute("class", "red"); break;
-            case "y": sp.setAttribute("class", "yellow"); break;
-            case "g": sp.setAttribute("class", "green"); break;
-        }
-        ifEdit = false;
-        b.appendChild(sp);
-        b.appendChild(sp2);
-        b.appendChild(buildDeleteButton(i));
-        b.addEventListener("contextmenu", (e) => editText(sp.textContent, e, sp, i, b));
-        bullets.appendChild(b);
-    }
-    list.appendChild(bullets);
-}
-
 
 function whenSubmit(c) {
     if (!ifEdit) {
