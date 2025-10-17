@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="todo.css">
     <link rel="shortcut icon" href="danielgao2.jpg" type="image/jpg">
     <title>Todo List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="todo.js" defer></script>
 </head>
-<body>
-    <div>
-        <div class="main">
-            <div class="txt">
-                <h1>Todo List</h1>
-                <input type="text" placeholder="Type task here...">
+<body class="bg-gradient-to-r from-blue-400 via-teal-500 to-green-600 min-h-screen relative">
+    <div class="main h-500 mb-10 py-8 p-10 bg-cyan-300/20 rounded-xl shadow-xl absolute top-[150px] left-1/2 -translate-x-1/2">
+        <div>
+            <div class="txt flex flex-col items-center">
+                <h1 class="pb-4 font-bold text-4xl text-sky-800">Todo List</h1>
+                <input type="text" placeholder="Type task here..." class="text-sm active:border-sky-400 border-2 border-sky-800 rounded-lg p-2 shadow-lg">
                 <br>
             </div>
-            <div > 
-                <button id="g" class="green" type="button">Easy task</button>
-                <button id="y" class="yellow" type="button">Medium task</button>
-                <button id="r" class="red" type="button">Hard task</button>
+            <div class="flex flex-nowrap"> 
+                <button id="g" class="green bg-emerald-400/50 px-2 rounded-lg border border-emerald-700 text-emerald-900 mr-1 shadow-md" type="button">Easy task</button>
+                <button id="y" class="yellow bg-yellow-400/50 px-2 rounded-lg border border-yellow-700 text-yellow-900 mx-1 shadow-md" type="button">Medium task</button>
+                <button id="r" class="red bg-red-400/50 px-2 rounded-lg border border-red-700 text-red-900 ml-1 shadow-md" type="button">Hard task</button>
                 <br>
             </div>
         </div>
-        <div class="butt">
-            <ul id="list"></ul>
+        <div class="butt relative">
+            <ul id="list" class="overflow-auto flex flex-col max-h-300 pt-4 justify-top marker:text-sky-700 list-disc text-blue-900"></ul>
         </div>
     </div>
+    <p class="absolute top-0 right-0 text-blue-900 p-4">Made with ❤️ by xaltedly</p>
 </body>
 </html>
